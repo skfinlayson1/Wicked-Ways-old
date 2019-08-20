@@ -1,0 +1,57 @@
+#navigation {
+    margin-top: -100px;
+    position: fixed;
+    width: 100%;
+}
+
+/* Home ----------------------------------------------------------- */
+
+.home {
+    float: left;
+    height: 15vw;
+    max-height: 85px;
+}
+
+.home:hover {
+    box-shadow: -175px 40px 50px -30px white;
+}
+
+.home:active {
+    box-shadow: -175px 40px 50px -30px rgb(211, 206, 58);
+}
+
+/* Logo -------------------------------------------------------- */
+
+.small-logo {
+    height: 15vw;
+    max-height: 85px;
+}
+
+.small-logo:hover {
+    box-shadow: 0px 70px 15px -65px white; 
+}
+
+.small-logo:active {
+    box-shadow: 0px 70px 15px -65px rgb(211, 206, 58);
+}
+
+
+/* Menu ------------------------------------------------------------- */
+
+.menu {
+    float: right;
+    height: 15vw;
+    max-height: 85px;
+}
+
+
+.menu:hover {
+    box-shadow: 175px 40px 50px -30px white;  
+}
+
+.menu:active {
+    box-shadow: 175px 40px 50px -30px rgb(211, 206, 58);
+}
+
+
+

@@ -8,7 +8,7 @@ const routeConfig = require("./configuration/route-config");
 const app = express();
 
 // configure app
-appConfig(app);
-routeConfig(app);
+appConfig.init(app, express);
+routeConfig.init(app);
 
 module.exports = app;
