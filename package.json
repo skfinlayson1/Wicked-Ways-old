@@ -5,19 +5,12 @@
   "main": "server-side/server.js",
   "scripts": {
     "start": "node server-side/server.js",
-    "heroku-postbuild": "cd client-side && npm install --only=dev && npm install && npm run build",
+    "heroku-postbuild": "cd server-side && npm install --only=dev && cd ../client-side && npm install --only=dev && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "npm": "5.7.1",
     "node": "10.x"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "path": "^0.12.7",
-    "pg": "^7.12.1",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.15.1"
   },
   "repository": {
     "type": "git",
