@@ -11,7 +11,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:8080/hello")
+        fetch("http://localhost:3000/hello") //fix this
         .then((res) => {
             console.log(res)
             res.json()

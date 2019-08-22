@@ -1,0 +1,27 @@
+{
+  "name": "server-side",
+  "version": "1.0.0",
+  "description": "server side npm package",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skfinlayson1/Wicked-Ways.git"
+  },
+  "author": "Shane Finlayson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skfinlayson1/Wicked-Ways/issues"
+  },
+  "homepage": "https://github.com/skfinlayson1/Wicked-Ways#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.15.1"
+  }
+}
