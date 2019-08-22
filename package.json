@@ -7,6 +7,21 @@
     "start": "node server-side/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "npm": "5.7.1",
+    "node": "10.x"
+  },
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.1",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.15.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skfinlayson1/Wicked-Ways.git"
