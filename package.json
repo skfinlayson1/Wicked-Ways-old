@@ -4,7 +4,7 @@
   "description": "Wicked ways website",
   "main": "server-side/server.js",
   "scripts": {
-    "start": "node server-side/server.js"
+    "start": "node server-side/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
