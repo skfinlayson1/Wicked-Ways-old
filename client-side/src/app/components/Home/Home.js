@@ -24,11 +24,11 @@ class Home extends React.Component {
         fetch(`${url}/hello`)
         .then((res) => {
             console.log(res);
-            res.json()
+            res.blob()
             .then((res) => {
                 console.log(res);
                 this.setState({
-                    image: res
+                    image: URL.createObjectURL(res)
                 })
 
             })
