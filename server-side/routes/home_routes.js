@@ -13,11 +13,6 @@ router.get("/hello", (req, res) => {
 
     res.sendFile(path.join(__dirname, "../", "images/artwork/image.jpg"))
 
-    // fs.readFile(path.join(__dirname, "../", "images/artwork/image.jpg"), (err, content) => {
-    //     res.writeHead(200,{'Content-type':'image/jpg'});
-    //     res.end(content);
-    // })
-
 })
 
 module.exports = router;

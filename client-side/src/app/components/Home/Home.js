@@ -21,7 +21,7 @@ class Home extends React.Component {
 
     hello = () => {
 
-        fetch(`${url}/hello`)
+        fetch(`${url}/something`)
         .then((res) => {
             console.log(res);
             res.blob()
@@ -41,12 +41,12 @@ class Home extends React.Component {
 
         fd.append('image', e.target.files[0])
 
-        fetch(`${url}/upload`, {
+        fetch(`${url}/admin/add-artwork`, {
           method: 'POST',
           body: fd,
-          headers: {
-            "Content-Type": "multipart/form-data" 
-          }
+        //   headers: {
+        //     "Content-Type": "multipart/form-data" 
+        //   }
         })
             .then((res) => {
                 res.json()
