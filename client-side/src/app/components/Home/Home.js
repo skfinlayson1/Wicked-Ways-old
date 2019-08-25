@@ -74,7 +74,7 @@ class Home extends React.Component {
 
                 {/* Wicked Ways Logo */}
                 <img onClick={this.hello} id="full-logo" src={backgrounds.largeLogo} alt="Wicked Ways Logo"></img>
-                {/* <img src={this.state.image} alt="logo"></img> */}
+                <img src={this.state.image} alt="logo"></img>
 
                 <form>
                     <input type="file" id='fileInput' ref={this.fileInput} onChange={this.handleChange}></input>
