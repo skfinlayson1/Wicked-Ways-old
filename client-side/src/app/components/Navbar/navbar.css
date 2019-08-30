@@ -8,31 +8,31 @@
 
 .home {
     float: left;
-    height: 15vw;
-    max-height: 85px;
+    height: 14vw;
+    max-height: 80px;
 }
 
 .home:hover {
-    box-shadow: -175px 40px 50px -30px white;
+    box-shadow: -110px 40px 50px -30px white;
 }
 
 .home:active {
-    box-shadow: -175px 40px 50px -30px rgb(211, 206, 58);
+    box-shadow: -110px 40px 50px -30px rgb(211, 206, 58);
 }
 
 /* Logo -------------------------------------------------------- */
 
 .small-logo {
-    height: 15vw;
-    max-height: 85px;
+    height: 14vw;
+    max-height: 80px;
 }
 
 .small-logo:hover {
-    box-shadow: 0px 70px 15px -65px white; 
+    box-shadow: 0px 47px 15px -37px white; 
 }
 
 .small-logo:active {
-    box-shadow: 0px 70px 15px -65px rgb(211, 206, 58);
+    box-shadow: 0px 47px 15px -37px rgb(211, 206, 58);
 }
 
 
@@ -40,17 +40,17 @@
 
 .menu {
     float: right;
-    height: 15vw;
-    max-height: 85px;
+    height: 14vw;
+    max-height: 80px;
 }
 
 
 .menu:hover {
-    box-shadow: 175px 40px 50px -30px white;  
+    box-shadow: 110px 40px 50px -30px white;  
 }
 
 .menu:active {
-    box-shadow: 175px 40px 50px -30px rgb(211, 206, 58);
+    box-shadow: 110px 40px 50px -30px rgb(211, 206, 58);
 }
 
 

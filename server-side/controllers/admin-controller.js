@@ -29,19 +29,16 @@ module.exports = {
                 // if no directory exists, create new directory
                 fs.mkdir(newPath, () => {
 
-                    let mainImageLocation = "";
-
                     for (let objKey in req.files) {
 
                         const tempImagePath = req.files[objKey].path;
                         const ext = path.extname(tempImagePath)
                         const imageName = req.files[objKey].fieldName;
 
-                        // Store the main image under a special directory
+                        // Store the main image under a constant filename to easily find later on
                         if (objKey === "mainImage") {
 
                             fs.renameSync(tempImagePath, `${newPath}/main_image${ext}`)
-                            mainImageLocation = `${newPath}/main_image${ext}`;
             
                         // Create a file for all additional images
                         } else {
@@ -50,7 +47,7 @@ module.exports = {
                     }
 
                     // Store values in database if no errors were blown
-                    productQueries.addProduct(textValues, mainImageLocation, (err, data) => {
+                    productQueries.addProduct(textValues, newPath, (err, data) => {
                         if (err) {
                             res.json(err);
                         } else {

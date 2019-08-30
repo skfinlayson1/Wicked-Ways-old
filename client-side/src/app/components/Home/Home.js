@@ -1,6 +1,5 @@
 import React from "react";
 
-import imageLoader from "../../helpers/image_loader";
 import backgrounds from "../../../data/backgrounds/home";
 import url from "../../../config/url-config";
 
@@ -20,25 +19,25 @@ class Home extends React.Component {
     componentDidMount() {
 
         fetch(`${url}/home-artwork`)
-        .then((res) => {
-            res.arrayBuffer().then((utf8Array) => {
+        .then((res) => res.json().then((response) => {
 
-                const imageArray = imageLoader(utf8Array)
+            const imgArr = this.state.images;
+            for (let objKey in response) {
+                let img = response[objKey].mainImage.data;
+                img = Uint8Array.from(img);
+                img = new Blob([img], {"type": `image/${response[objKey].ext}`});
+                img = URL.createObjectURL(img);
+                response[objKey].mainImage = img;
+                imgArr.push(response[objKey]);
+            }
 
-                imageArray.forEach((imageArray) => {
-                    const blob = new Blob([imageArray[0]], {"type": "image/jpg"});
-                    const image = URL.createObjectURL(blob);
-                    const images = this.state.setup;
-                    images.push(image);
-                    this.setState((prevState) => {
-                        return {
-                            setup: prevState.setup = images
-                        }
-                    })
+            this.setState((prevState) => {
+                return ({
+                    images: prevState.images = imgArr
                 })
-
             })
-        })
+
+        }))
 
     }
 
@@ -50,11 +49,23 @@ class Home extends React.Component {
             <div className='landing'>
 
                 {/* Wicked Ways Logo */}
-                <img id="full-logo" src={backgrounds.largeLogo} alt="Wicked Ways Logo"></img>
+                <img onClick={this.hello} id="full-logo" src={backgrounds.largeLogo} alt="Wicked Ways Logo"></img>
 
-                {this.state.setup.map((img, index) => {   
+                {this.state.images.map((img, index) => {   
                     return (
-                        <img className="artwork-images" src={img} key={index} alt={index}></img>
+                        <div className="artwork" key={img.id}>
+                            <img className="artwork-image" src={img.mainImage} alt={img.description}></img>
+
+                            <div className="artwork-info">
+
+                                <label htmlFor="name">Name:</label>
+                                <h3 className="artwork-name" name="name">{img.name}</h3>
+
+                                <label htmlFor="description">Description:</label>
+                                <p className="artwork-description" name="description">{img.description}</p>
+
+                            </div>
+                        </div>
                     )
                 })}
 
