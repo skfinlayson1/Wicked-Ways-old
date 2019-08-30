@@ -1,0 +1,59 @@
+#add-product {
+
+}
+
+#product-form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    padding: 30px;
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+}
+
+.product-form-text {
+    margin: 0px;
+    text-align: left;
+}
+
+.form-section {
+    padding-top: 20px;
+    width: 100%;
+}
+
+#technicals .info-group {
+    display: inline-block;
+    width: 20%;
+    padding: 2.5%;
+}
+
+#submit-button {
+    width: 75%;
+    padding: 10px;
+    background-color: green;
+    border-radius: 5px;
+    border-color: black;
+}
+
+
+/* HTML Labels */
+
+input {
+    width: 100%;
+    border-radius: 5px;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    border-color: black;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+input::placeholder {
+    color: white;
+}
+
+label {
+    margin-top: 20px;
+}
+
