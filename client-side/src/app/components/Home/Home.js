@@ -20,9 +20,10 @@ class Home extends React.Component {
 
         fetch(`${url}/home-artwork`)
         .then((res) => res.json().then((response) => {
-
+            //console.log(response);
             const imgArr = this.state.images;
             for (let objKey in response) {
+                //console.log(response[objKey]); ////////////////
                 let img = response[objKey].mainImage.data;
                 img = Uint8Array.from(img);
                 img = new Blob([img], {"type": `image/${response[objKey].ext}`});
