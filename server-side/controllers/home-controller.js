@@ -12,20 +12,15 @@ module.exports = {
 
 // homeArtwork
     homeArtwork(req, res, next) {
-        productQueries.findAll((err, products) => {
-            if (err) {
-                res.json(err);
-            } else {
-                const files = [];
-
-                products.forEach((product) => {
-                    const data = fs.readFileSync(product.imagePath)
-                    files.push(data.toString());
-                })
-                
-                res.json(files);
-            }
-        })
+        const image1 = fs.readFileSync(path.join(__dirname, "../", "/images/artwork/Abigail_Ratchford/main_image.jpg"));
+        const image2 = fs.readFileSync(path.join(__dirname, "../", "/images/artwork/Abigail_Ratchford/image1.jpg"));
+        const image3 = fs.readFileSync(path.join(__dirname, "../", "/images/artwork/Abigail_Ratchford/image2.jpg"));
+    
+        const img = Uint8Array.from(image1).join(" ");
+        const img2 = Uint8Array.from(image2).join(" ");
+        const img3 = Uint8Array.from(image3).join(" ")
+    
+        res.send([img,img2,img3]);
     }
 
 }
