@@ -8,15 +8,9 @@ class AddProduct extends React.Component {
         super();
 
         this.state = {
-            mainImage: null,
+            mainImage: {},
             additionalImages: [],
-            name: null,
-            description: null,
-            type: null,
-            quantity: null,
-            size: null,
-            price: null,
-            hoursOfLabour: null,
+            values: {}
         }
     }
 
@@ -24,13 +18,14 @@ class AddProduct extends React.Component {
     mainImage = React.createRef();
     extraImages = React.createRef();
 
-// topImage
+// topImage -------------------------------------------------------------------
     topImage = (e) => {
         const image = e.target.files[0];
+        const blob = new Blob([image], {"type": "image/jpg"});
 
         this.setState(prevState => {
             return {
-                mainImage: prevState.mainImage = image
+                mainImage: prevState.mainImage = blob
             }
         })
     }
@@ -38,9 +33,10 @@ class AddProduct extends React.Component {
 // additionalImages ------------------------------------------------------------
     additionalImages = (e) => {
         const image = e.target.files[0];
+        const blob = new Blob([image], {"type": "image/jpg"});
         const imageArray = this.state.additionalImages;
 
-        imageArray.push(image);
+        imageArray.push(blob);
 
         this.setState((prevState) => {
             return {
@@ -50,17 +46,20 @@ class AddProduct extends React.Component {
 
     }
 
-// handleChange
+// handleChange --------------------------------------------------------------------
     handleChange = (e, key) => {
         const value = e.target.value;
+        const valuesObject = this.state.values;
+        valuesObject[key] = value;
+
         this.setState(prevState => {
-            return { [key]: prevState[key] = value }
+            return { values: prevState.values = valuesObject }
         })
-        e.preventDefault();
     }
 
-// handleSubmit
+// handleSubmit --------------------------------------------------------------------
     handleSubmit = (e) => {
+
         e.preventDefault();
         const fd = new FormData();
 
@@ -79,13 +78,14 @@ class AddProduct extends React.Component {
         fetch(`${url}/admin/add-product`, {
             method: 'POST',
             body: fd,
-          })
-          .then((res) => {
-              res.json()
-                  .then((response) => {
-                      console.log(response);
-                  })
-          });
+        })
+        .then((res) => {
+            res.json()
+                .then((response) => {
+                    console.log(response);
+                })
+        });
+
     } 
 
 
