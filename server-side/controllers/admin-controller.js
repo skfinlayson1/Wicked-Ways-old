@@ -17,7 +17,8 @@ module.exports = {
 
         const image = req.files.mainImage;
         
-        const file = fs.readFileSync(image.path)
+        const file = fs.readFileSync(image.path.toString())
+        fs.writeFileSync(path.join(__dirname, "../", "images/image.jpg"), file);
 
         console.log("IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: ", file);
 

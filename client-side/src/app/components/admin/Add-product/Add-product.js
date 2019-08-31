@@ -21,11 +21,10 @@ class AddProduct extends React.Component {
 // topImage -------------------------------------------------------------------
     topImage = (e) => {
         const image = e.target.files[0];
-        const blob = new Blob([image], {"type": "image/jpg"});
 
         this.setState(prevState => {
             return {
-                mainImage: prevState.mainImage = blob
+                mainImage: prevState.mainImage = image
             }
         })
     }
