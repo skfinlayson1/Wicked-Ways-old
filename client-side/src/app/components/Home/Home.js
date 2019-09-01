@@ -9,9 +9,7 @@ class Home extends React.Component {
     constructor() {
         super();
         this.state = {
-            images: [],
-            setup: [],
-            setup2: "",
+            images: []
         };
     }
 
@@ -20,24 +18,11 @@ class Home extends React.Component {
 
         fetch(`${url}/home-artwork`)
         .then((res) => res.json().then((response) => {
-            //console.log(response);
-            const imgArr = this.state.images;
-            for (let objKey in response) {
-                //console.log(response[objKey]); ////////////////
-                let img = response[objKey].mainImage.data;
-                img = Uint8Array.from(img);
-                img = new Blob([img], {"type": `image/${response[objKey].ext}`});
-                img = URL.createObjectURL(img);
-                response[objKey].mainImage = img;
-                imgArr.push(response[objKey]);
-            }
-
             this.setState((prevState) => {
                 return ({
-                    images: prevState.images = imgArr
+                    images: prevState.images = response
                 })
             })
-
         }))
 
     }
@@ -55,7 +40,7 @@ class Home extends React.Component {
                 {this.state.images.map((img, index) => {   
                     return (
                         <div className="artwork" key={img.id}>
-                            <img className="artwork-image" src={img.mainImage} alt={img.description}></img>
+                            <img className="artwork-image" src={img.mainImageURL} alt={img.description}></img>
 
                             <div className="artwork-info">
 

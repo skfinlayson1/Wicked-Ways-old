@@ -29,7 +29,7 @@ module.exports = {
       hoursOfLabour: {
         type: Sequelize.INTEGER
       },
-      imagePath: {
+      mainImageURL: {
         type: Sequelize.STRING
       },
       createdAt: {

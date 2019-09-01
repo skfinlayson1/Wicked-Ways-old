@@ -14,10 +14,6 @@ class AddProduct extends React.Component {
         }
     }
 
-// refs -------------------------------------------------------------
-    mainImage = React.createRef();
-    extraImages = React.createRef();
-
 // topImage -------------------------------------------------------------------
     topImage = (e) => {
         const image = e.target.files[0];
@@ -32,10 +28,9 @@ class AddProduct extends React.Component {
 // additionalImages ------------------------------------------------------------
     additionalImages = (e) => {
         const image = e.target.files[0];
-        const blob = new Blob([image], {"type": "image/jpg"});
         const imageArray = this.state.additionalImages;
 
-        imageArray.push(blob);
+        imageArray.push(image);
 
         this.setState((prevState) => {
             return {
@@ -47,8 +42,10 @@ class AddProduct extends React.Component {
 
 // handleChange --------------------------------------------------------------------
     handleChange = (e, key) => {
+
         const value = e.target.value;
         const valuesObject = this.state.values;
+        
         valuesObject[key] = value;
 
         this.setState(prevState => {
@@ -58,22 +55,20 @@ class AddProduct extends React.Component {
 
 // handleSubmit --------------------------------------------------------------------
     handleSubmit = (e) => {
-
         e.preventDefault();
+
         const fd = new FormData();
-
-        // add all of the current states values except for the additionalImages array
-        for (let objKey in this.state) {
-            if (objKey !== "additionalImages") {
-                fd.append(objKey, this.state[objKey]);
-            };
+        // Append the text values for the artwork
+        for (let oKey in this.state.values) {
+            fd.append(oKey, this.state.values[oKey]);
         };
-
-        // loop through additionalImages and add them so they can be parsed correctly
+        // Append the main image
+        fd.append("mainImage", this.state.mainImage);
+        // loop through additionalImages and add them individually so they can be parsed correctly
         this.state.additionalImages.forEach((image, num) => {
             fd.append(`image${num}`, image)
-        })
-
+        });
+        // Post all the images and artwork values inside the formdata
         fetch(`${url}/admin/add-product`, {
             method: 'POST',
             body: fd,
@@ -83,7 +78,10 @@ class AddProduct extends React.Component {
                 .then((response) => {
                     console.log(response);
                 })
-        });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 
     } 
 
@@ -102,13 +100,13 @@ class AddProduct extends React.Component {
                     {/* Main */}
                     <div className="form-section">
                         <label htmlFor="main">Main Image</label>
-                        <input type="file" id='main-image' name='main' ref={this.fileInput} onChange={this.topImage}></input>
+                        <input type="file" id='main-image' name='main' onChange={this.topImage}></input>
                     </div>
 
                     {/* Extras */}
                     <div className="form-section">
                         <label htmlFor="extras">Extra Images</label>
-                        <input type='file' id="extra-images" name='extras' ref={this.extraImages} onChange={this.additionalImages}></input>
+                        <input type='file' id="extra-images" name='extras' onChange={this.additionalImages}></input>
                     </div>
 
                     {/* Name */}

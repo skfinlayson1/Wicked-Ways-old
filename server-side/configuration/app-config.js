@@ -16,7 +16,7 @@ module.exports = {
         cloudinary.config({
             cloud_name: "wicked-ways",
             api_key: "898855627752421",
-            api_secret: "7pRROOC1JkkdzeZ7YUVkcc2QsJ4"
+            api_secret: "7pRROOC1JkkdzeZ7YUVkcc2QsJ4" // FIX THIS!!!!!!!!!!!!!
         })
 
     }

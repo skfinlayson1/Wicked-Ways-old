@@ -1,5 +1,4 @@
-const path = require("path");
-const fs = require("fs");
+const cloudinary = require("cloudinary").v2;
 
 const productQueries = require("../db/queries.product");
 
@@ -9,77 +8,55 @@ module.exports = {
 
     },
 
-// addProduct
+// addProduct ----------------------------------------------------------------------------
     addProduct(req, res, next) {
 
-        console.log("FILES: ", req.files.mainImage);
-        console.log("BODY: ", req.body.image);
+        const files = req.files;
+        const body = req.body;
+        const folderName = body.name.split(" ").join("_")
+        const mainImage = files.mainImage;
+        let mainImageURL;
+        const extraImagesCount = Object.keys(files).length - 1;
 
-        const image = req.files.mainImage;
-        
-        const file = fs.readFileSync(image.path.toString())
-        fs.writeFileSync(path.join(__dirname, "../", "images/image.jpg"), file);
+        try {
+            // Upload the main image with a constant name so it can be easily found.
+            cloudinary.uploader.upload(mainImage.path, {folder : folderName, public_id: "main_image"}, (err, image) => {
+                if (err) {
+                    throw err;
+                }
+                // Set the url to the main image.
+                mainImageURL = image.secure_url;
+                // Set a counter to track when the last image is uploaded so we can queue the database.
+                // Loop through all the additional images and upload them.
+                let uploadCount = 0;
+                let imageNumber = 0;
+                for (let oKey in files) {
+                    if (oKey !== "mainImage") {
+                        // Increment imageNumber per pass so each image has an easily found filename i.e. "image0, image1"
+                        imageNumber ++
+                        cloudinary.uploader.upload(files[oKey].path, {folder : folderName, public_id: "image" + imageNumber}, (err, image) => {
+                            uploadCount++;
+                            if (err) {
+                                throw err;
+                            } else if (uploadCount === extraImagesCount)  {
+                                // Add values to the database.
+                                productQueries.addProduct(body, mainImageURL, (err, response) => {
+                                    if (err) {
+                                        res.json(err);
+                                    } else {
+                                        res.json(response);
+                                    }
+                                })
+                            }
+                        });
+                    }
+                }
+            })
+        }
+        catch(error) {
+            res.json(error);
+        }
 
-        console.log("IMAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: ", file);
-
-        res.json("hi")
-
-
-
-        // // Collect values from the body
-        // const textValues = {}
-        // for (let keys in req.body) {
-        //     textValues[keys] = req.body[keys];
-        // }
-
-        // // Translate name into a proper folder name and specify the new directory
-        // const newFolderName = textValues.name.split(" ").join("_");
-        // const newPath = path.join(__dirname, "../", `images/artwork/${newFolderName}`);
-
-        // // Check if directory exists
-        // fs.readdir(newPath, (err, data) => {
-        //     if (err) {
-
-        //         // if no directory exists, create new directory
-        //         fs.mkdir(newPath, () => {
-
-        //             for (let objKey in req.files) {
-
-        //                 const tempImagePath = req.files[objKey].path;
-        //                 const ext = path.extname(tempImagePath)
-        //                 const imageName = req.files[objKey].fieldName;
-
-        //                 console.log(req.files);
-
-        //                 // Store the main image under a constant filename to easily find later on
-        //                 if (objKey === "mainImage") {
-
-        //                     console.log(req.files[objKey])
-        //                     fs.writeFileSync(`${newPath}/${imageName}${ext}`, req.files[objKey])
-
-        //                     fs.renameSync(tempImagePath, `${newPath}/main_image${ext}`)
-            
-        //                 // Create a file for all additional images
-        //                 } else {
-        //                     fs.renameSync(tempImagePath,`${newPath}/${imageName}${ext}`)
-        //                 }
-        //             }
-
-        //             // Store values in database if no errors were blown
-        //             productQueries.addProduct(textValues, newPath, (err, data) => {
-        //                 if (err) {
-        //                     res.json(err);
-        //                 } else {
-        //                     res.json(data);
-        //                 }
-        //             })
-
-        //         })
-        //     // if directory exists return an error
-        //     } else {
-        //         res.json("ERROR: Name already exists!")
-        //     }
-        // })
     }
 
 }

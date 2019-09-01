@@ -12,7 +12,7 @@ module.exports = {
             size: values.size,
             price: values.price,
             hoursOfLabour: values.hoursOfLabour,
-            imagePath: filePath
+            mainImageURL: filePath
         })
         .then((product) => {
             callback(null, product);
