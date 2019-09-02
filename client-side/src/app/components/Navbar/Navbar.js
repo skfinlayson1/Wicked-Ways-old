@@ -2,32 +2,45 @@ import React from "react";
 import {NavLink} from 'react-router-dom';
 
 import icons from "../../../data/icons/navbar_images";
-//import CSS from './navbarCSS';
+
+import DropDown from "./Drop_down";
 
 class Navbar extends React.Component {
 
     constructor() {
         super();
 
-        this.state = {};
+        this.state = {
+            showMenu: false
+        };
+        this.menuLogo = React.createRef();
+    }
+
+    menuClick = () => {
+        this.setState((prevState) => {
+            return ({
+                showMenu: !prevState.showMenu
+            })
+        })
     }
 
     render() {
         return (
-            <nav id='navigation'>
+            <div id="navigation">
+                <div id='icons'>
 
-                <NavLink to="/">
-                    <img className='home' src={icons.homeHeader} alt="Home"></img>    
-                </NavLink>
-                
-                <img className='small-logo' src={icons.logo} alt="Wicked Ways"></img>
-                
-                <NavLink to='/admin/add-product'>
-                    <img className='menu' src={icons.menuHeader} alt="Menu"></img>
-                </NavLink>
+                    <NavLink to="/">
+                        <img className='home' src={icons.homeHeader} alt="Home"></img>    
+                    </NavLink>
+                    
+                    <img className='small-logo' src={icons.logo} alt="Wicked Ways"></img>
+                    
+                    <img className='menu' onClick={this.menuClick} src={icons.menuHeader} alt="Menu"></img>
+                    
+                </div>
 
-                
-            </nav>
+                <DropDown menuState={this.state.showMenu} toggleMenu={this.menuClick} />
+            </div>
 
 
         );
