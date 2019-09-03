@@ -1,6 +1,11 @@
+#drop-down-container {
+    width: 100%;
+    position: fixed;
+}
+
 #drop-down {
-    position: relative;
     float: right;
+    margin-left: auto;
     padding: 20px;
     margin-right: 10px;
     margin-bottom: -100%;
@@ -9,7 +14,18 @@
 
 }
 
+#drop-down small {
+    float: left;
+    border: 2px solid black;
+    padding: 4px;
+    margin: 0px 0px -18px -18px;
+}
+
 #drop-down h3 {
     text-decoration: none;
     color: white;
+}
+
+#drop-down small:hover {
+    cursor: pointer;
 }
