@@ -1,0 +1,62 @@
+#about {
+    color: rgb(228, 228, 228);
+}
+
+#about div p {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#production div {
+    display: none;
+}
+
+#show-more-button {
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: green;
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+.show-less-button {
+    display: none;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+
+#about h1 {
+    font-size: 2.75rem;
+}
+
+#about h2 {
+    font-size:  2.5rem;
+}
+
+#about h3 {
+    font-size: 2rem;
+    text-align: left;
+    margin-left: 10%;
+}
+
+#about p {
+    font-size: 1.35rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#about a {
+    text-decoration: rgb(1, 112, 112);
+}
+
+#about a:visited {
+    color: turquoise;
+}
