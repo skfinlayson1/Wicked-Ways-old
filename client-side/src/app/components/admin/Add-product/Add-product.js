@@ -1,6 +1,7 @@
 import React from 'react';
 
 import url from "../../../../config/url-config";
+import Errors from "../../Errors";
 
 class AddProduct extends React.Component {
 
@@ -10,7 +11,9 @@ class AddProduct extends React.Component {
         this.state = {
             mainImage: {},
             additionalImages: [],
-            values: {}
+            values: {},
+            loading: false,
+            errors: null
         }
     }
 
@@ -55,7 +58,7 @@ class AddProduct extends React.Component {
 
 // handleSubmit --------------------------------------------------------------------
     handleSubmit = (e) => {
-        e.preventDefault();
+        this.setState((prevState) => {return {loading: !prevState.loading}})
 
         const fd = new FormData();
         // Append the text values for the artwork
@@ -68,30 +71,42 @@ class AddProduct extends React.Component {
         this.state.additionalImages.forEach((image, num) => {
             fd.append(`image${num}`, image)
         });
-        // Post all the images and artwork values inside the formdata
+
         fetch(`${url}/admin/add-product`, {
             method: 'POST',
             body: fd,
         })
         .then((res) => {
-            res.json()
-                .then((response) => {
-                    console.log(response);
-                })
+            res.json().then((response) => {
+                this.setState((prevState) => { return { loading: !prevState.loading, errors: prevState.errors = null }})
+                if (response.errors) {
+                    this.handleError(response.errors)
+                } else {
+                    window.location.reload();
+                }
+            })
         })
         .catch((err) => {
             console.log(err);
         })
+    }
 
-    } 
+// HandleError --------------------------------------------------------------
+    handleError = (err) => {
+        this.setState((prevState) => {
+            return {errors: prevState.errors = err}
+        })
+    }
 
 
 
 // render ===================================================================
     render() {
-
+        
         return (
             <div id="add-product">
+
+                <Errors errors={this.state.errors} />
 
                 <form id="product-form">
 
@@ -152,7 +167,7 @@ class AddProduct extends React.Component {
                     </div>
 
                     {/* Submit */}
-                    <button id="submit-button" onClick={this.handleSubmit}>Submit</button>
+                    {this.state.loading? <h3>Uploading...</h3> :<button id="submit-button" onClick={this.handleSubmit}>Submit</button>}
                 </form>
 
             </div>

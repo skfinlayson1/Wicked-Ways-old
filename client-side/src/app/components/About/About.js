@@ -1,7 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-
 class About extends React.Component {
     constructor() {
         super();
@@ -19,17 +18,9 @@ class About extends React.Component {
     render() { 
 
         const style = `
-            #production div {
-                display: block;
-            }
-
-            .show-less-button {
-                display: block;
-            }
-
-            #show-more-button {
-                display: none;
-            }
+            #production div {display: block}
+            .show-less-button {display: block}
+            #show-more-button {display: none}
         `
 
         return (
@@ -147,11 +138,11 @@ class About extends React.Component {
                 <section id="products-used">
                     <h1>The Products We Use</h1>
                     <p>
-                        <b>When it comes to the airbrush artwork, only <a href="https://www.houseofkolor.com/homepage/" target="_blank">House of Kolor</a> paint is used.</b>
+                        <b>When it comes to the airbrush artwork, only <a href="https://www.houseofkolor.com/homepage/" target="_blank" rel="noopener noreferrer">House of Kolor</a> paint is used.</b>
                     </p>
                     <p>
                         To help make sure your product lasts, only the best products are used to create your piece of art.
-                        From the Iwata airbrushes and spray guns to the House of Kolor paint and <a href="https://www.orafol.com/en/americas/" target="_blank">ORAFOL</a>vinyl, no corners
+                        From the Iwata airbrushes and spray guns to the House of Kolor paint and <a href="https://www.orafol.com/en/americas/" target="_blank" rel="noopener noreferrer">ORAFOL</a>vinyl, no corners
                         are cut.
                     </p>
                     <p>

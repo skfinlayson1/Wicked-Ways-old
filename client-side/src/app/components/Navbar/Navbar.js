@@ -33,7 +33,10 @@ class Navbar extends React.Component {
                         <img className='home' src={icons.homeHeader} alt="Home"></img>    
                     </NavLink>
                     
-                    <img className='small-logo' src={icons.logo} alt="Wicked Ways"></img>
+                    <NavLink to="/about">
+                        <img className='small-logo' src={icons.logo} alt="Wicked Ways"></img>
+                    </NavLink>
+                    
                     
                     <img className='menu' onClick={this.menuClick} src={icons.menuHeader} alt="Menu"></img>
                     

@@ -8,8 +8,8 @@ export default function DropDown(props) {
             <div id="drop-down-container">
                 <nav id="drop-down">
 
-                    <NavLink to="/admin/add-product">
-                        <h3 onClick={props.toggleMenu}>Add Product</h3>
+                    <NavLink to="/admin">
+                        <h3 onClick={props.toggleMenu}>Admin</h3>
                     </NavLink>
 
                     <NavLink to="/contact">
