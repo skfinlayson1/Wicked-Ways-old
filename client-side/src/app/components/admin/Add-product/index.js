@@ -1,4 +1,4 @@
-import AddProduct from './Add-product.js.js.js.js';
+import AddProduct from './Add-product';
 import './add-product.css';
 
 export default AddProduct;
