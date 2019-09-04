@@ -82,7 +82,7 @@ class AddProduct extends React.Component {
                 if (response.errors) {
                     this.handleError(response.errors)
                 } else {
-                    window.location.reload();
+                    //window.location.reload();
                 }
             })
         })
