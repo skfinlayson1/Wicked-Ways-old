@@ -1,0 +1,42 @@
+
+.additional-image, .selected-additional-image {
+    display: inline-block;
+    padding: 9.5%;
+    margin: 1% 1% 1% 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.additional-image:last-child, .selected-additional-image:last-child {
+    margin-right: 0px;
+}
+
+.selected-additional-image {
+    box-shadow: 0px 0px 20px 5px inset white;
+}
+
+/* Scrollbar settings */
+
+/* height */
+::-webkit-scrollbar {
+    height: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000;
+    border: 0.2rem solid rgb(36, 36, 36);
+    border-radius: 5px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    height: 15px;
+    background: rgb(82, 82, 82);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(42, 42, 42); 
+  }

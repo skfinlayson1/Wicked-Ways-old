@@ -10,10 +10,10 @@ const cloudinary = require("cloudinary").v2;
 module.exports = {
 
     init(app, express) {
-        app.use(cors());
         app.use(express.static(path.join(__dirname, "../", "../", "client-side", "build")));
         app.use(bodyParser.json());
         app.use(formData.parse());
+        app.use(cors());
         app.use(session({
             secret: process.env.SESSION_SECRET,
             resave: false,

@@ -40,7 +40,7 @@ module.exports = {
                                 throw err;
                             } else if (uploadCount === extraImagesCount)  {
                                 // Add values to the database.
-                                productQueries.addProduct(body, mainImageURL, (err, response) => {
+                                productQueries.addProduct(body, mainImageURL, extraImagesCount, (err, response) => {
                                     if (err) {
                                         res.json(err);
                                     } else {

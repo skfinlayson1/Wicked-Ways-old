@@ -1,6 +1,7 @@
 #drop-down-container {
     width: 100%;
     position: fixed;
+    margin-top: 15vw;
 }
 
 #drop-down {
@@ -28,4 +29,10 @@
 
 #drop-down small:hover {
     cursor: pointer;
+}
+
+@media all and (min-width: 515px) {
+    #drop-down-container {
+        margin-top: 5rem;
+    }
 }

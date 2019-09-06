@@ -1,7 +1,8 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 import backgrounds from "../../../data/backgrounds/home";
-import url from "../../../config/url-config";
+import {url} from "../../../config/url-config";
 
 
 class Home extends React.Component {
@@ -29,33 +30,34 @@ class Home extends React.Component {
 
 // render =====================================================
     render() {
-
         return (
 
-            <div className='landing'>
+            <main className='landing'>
 
                 {/* Wicked Ways Logo */}
                 <img onClick={this.hello} id="full-logo" src={backgrounds.largeLogo} alt="Wicked Ways Logo"></img>
 
                 {this.state.images.map((img, index) => {   
                     return (
-                        <div className="artwork" key={img.id}>
-                            <img className="artwork-image" src={img.mainImageURL} alt={img.description}></img>
+                        <NavLink to={`product/${img.id}`} key={img.id}>
+                            <div className="artwork">
+                                <img className="artwork-image" src={img.mainImageURL} alt={img.description}></img>
 
-                            <div className="artwork-info">
+                                <div className="artwork-info">
 
-                                <label htmlFor="name">Name:</label>
-                                <h3 className="artwork-name" name="name">{img.name}</h3>
+                                    <label htmlFor="name">Name:</label>
+                                    <h3 className="artwork-name" name="name">{img.name}</h3>
 
-                                <label htmlFor="description">Description:</label>
-                                <p className="artwork-description" name="description">{img.description}</p>
+                                    <label htmlFor="description">Description:</label>
+                                    <p className="artwork-description" name="description">{img.description}</p>
 
+                                </div>
                             </div>
-                        </div>
+                        </NavLink>
                     )
                 })}
 
-            </div>
+            </main>
 
         );
     }

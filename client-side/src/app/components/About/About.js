@@ -142,7 +142,7 @@ class About extends React.Component {
                     </p>
                     <p>
                         To help make sure your product lasts, only the best products are used to create your piece of art.
-                        From the Iwata airbrushes and spray guns to the House of Kolor paint and <a href="https://www.orafol.com/en/americas/" target="_blank" rel="noopener noreferrer">ORAFOL</a>vinyl, no corners
+                        From the Iwata airbrushes and spray guns to the House of Kolor paint and <a href="https://www.orafol.com/en/americas/" target="_blank" rel="noopener noreferrer">ORAFOL</a> vinyl, no corners
                         are cut.
                     </p>
                     <p>

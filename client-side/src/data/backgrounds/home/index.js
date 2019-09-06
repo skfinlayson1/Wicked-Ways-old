@@ -1,5 +1,5 @@
 export default {
 
-    largeLogo: "/assets/backgrounds/home-page/Large-Logo.png"
+    largeLogo: "/assets/backgrounds/home-page/Large-Logo.gif"
 
 }

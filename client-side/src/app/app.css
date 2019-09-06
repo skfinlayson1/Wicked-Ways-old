@@ -3,6 +3,25 @@ body {
     text-align: center;
     background-color: black;
     color: white;
-    margin: 100px 0px 0px 0px;
+    margin: 0px;
     min-width: 0px;
+}
+
+main {
+    margin-top: 14vw;
+}
+
+a {
+    text-decoration: none;
+    text-decoration-color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+@media all and (min-width: 515px) {
+    main {
+        margin-top: 4.5rem;
+    }
 }

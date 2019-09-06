@@ -1,6 +1,6 @@
 import React from 'react';
 
-import url from "../../../../config/url-config";
+import {url} from "../../../../config/url-config";
 import Errors from "../../Errors";
 
 class AddProduct extends React.Component {

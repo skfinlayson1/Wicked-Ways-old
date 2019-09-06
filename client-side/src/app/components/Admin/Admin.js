@@ -12,7 +12,7 @@ class Admin extends React.Component {
     
     render() {
         return (
-            <main>
+            <main id="admin">
 
                 <h1>Welcome Admin</h1>
 

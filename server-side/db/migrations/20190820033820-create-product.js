@@ -32,6 +32,9 @@ module.exports = {
       mainImageURL: {
         type: Sequelize.STRING
       },
+      additionalImageCount: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

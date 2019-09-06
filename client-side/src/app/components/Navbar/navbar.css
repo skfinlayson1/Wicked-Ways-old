@@ -1,15 +1,20 @@
 #icons {
-    margin-top: -100px;
     position: fixed;
     width: 100%;
+    margin-bottom: 0px;
+}
+
+/* Groups ---------------------------------------------------------- */
+
+.home, .small-logo, .menu {
+    height: 14vw;
+    max-height: 4.5rem;
 }
 
 /* Home ----------------------------------------------------------- */
 
 .home {
     float: left;
-    height: 14vw;
-    max-height: 80px;
 }
 
 .home:hover {
@@ -21,11 +26,6 @@
 }
 
 /* Logo -------------------------------------------------------- */
-
-.small-logo {
-    height: 14vw;
-    max-height: 80px;
-}
 
 .small-logo:hover {
     box-shadow: 0px 47px 15px -37px white; 
@@ -40,8 +40,6 @@
 
 .menu {
     float: right;
-    height: 14vw;
-    max-height: 80px;
 }
 
 

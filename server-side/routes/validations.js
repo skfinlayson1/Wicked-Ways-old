@@ -9,7 +9,7 @@ module.exports = {
         check("quantity", "Quantity: must be greater than 0").isInt({gt: 0}),
         check("size", "Dimensions: must match the 'size' X 'size' structure").contains("X"),
         check("size", "Dimensions: must not be empty").not().isEmpty(),
-        check("price", "Price: must be a dollar amount").isCurrency({require_symbol: true}),
+        check("price", "Price: must be an integer larger than zero").isInt({gt: 0}),
         check("price", "Price: must not be empty").not().isEmpty(),
         check("hoursOfLabour", "Hours Of Labour: must not be less than 1 hour").isInt({gt: 0})
     ],

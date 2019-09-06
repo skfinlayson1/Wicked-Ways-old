@@ -3,7 +3,7 @@ const Product = require("./models").Product;
 
 module.exports = {
 
-    addProduct(values, filePath, callback) {
+    addProduct(values, filePath, additionalImageCount, callback) {
         Product.create({
             name: values.name,
             description: values.description,
@@ -12,7 +12,8 @@ module.exports = {
             size: values.size,
             price: values.price,
             hoursOfLabour: values.hoursOfLabour,
-            mainImageURL: filePath
+            mainImageURL: filePath,
+            additionalImageCount: additionalImageCount
         })
         .then((product) => {
             callback(null, product);
@@ -26,6 +27,16 @@ module.exports = {
         Product.findAll()
         .then((products) => {
             callback(null, products);
+        })
+        .catch((err) => {
+            callback(err);
+        })
+    },
+
+    findOne(id, callback) {
+        Product.findByPk(id)
+        .then((product) => {
+            callback(null, product);
         })
         .catch((err) => {
             callback(err);
