@@ -29,7 +29,7 @@ class AddProduct extends React.Component {
         this.setState(prevState => {
             return {
                 mainImage: prevState.mainImage = image,
-                mainImageUrl: prevState.mainImageUrl = [{imageUrl:url}]
+                mainImageUrl: prevState.mainImageUrl = [{imageUrl:url}] 
             }
         })
     }
@@ -131,7 +131,15 @@ class AddProduct extends React.Component {
                 if (response.errors) {
                     this.handleError(response.errors)
                 } else {
-                    //window.location.reload();
+                    this.setState((prevState) => {
+                        return {
+                            mainImage: prevState.mainImage = {},
+                            mainImageUrl: prevState.mainImageUrl = [],
+                            additionalImages: prevState.additionalImages = [],
+                            additionalImagesUrls: prevState.additionalImagUrls = [],
+                            values: prevState.values = {}
+                        }
+                    })
                 }
             })
         })
