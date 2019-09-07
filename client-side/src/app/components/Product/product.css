@@ -25,7 +25,7 @@
     margin: 0px;
 }
 
-#product-decription-container {
+#product-description-container {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -34,7 +34,11 @@
     border-radius: 1vw;
 }
 
+#product-description-container h4 {
+    margin: 0px;
+}
+
 #description-small-values h4 {
-    margin: 0px 5vw;
+    margin: 0rem 5vw 1.25rem;
     display: inline-block;
 }

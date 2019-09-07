@@ -79,14 +79,15 @@ class Product extends React.Component {
                         })}
                     </div>
 
-                    <div id="product-decription-container">
+                    <div id="product-description-container">
                         <h2>{this.state.values.name}</h2>
                         <h3>{this.state.values.description}</h3>
                         <div id="description-small-values">
                             <h4>Type: {this.state.values.type}</h4>
-                            <h4>Size: {this.state.values.size}</h4>
                             <h4>Quantity: {this.state.values.quantity}</h4>
                         </div>
+                        <label htmlFor="size">Dimensions</label>
+                        <h4 name="size">{this.state.values.size}</h4>
                         <h2>Price: ${this.state.values.price}</h2>
                         
                     </div>

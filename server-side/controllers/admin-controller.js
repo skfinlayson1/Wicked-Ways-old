@@ -18,6 +18,9 @@ module.exports = {
         let mainImageURL;
         const extraImagesCount = Object.keys(files).length - 1;
 
+        const size = `H: ${body.height}" | W: ${body.width}" | D: ${body.depth}"`;
+        body.size = size;
+
         try {
             // Upload the main image with a constant name so it can be easily found.
             cloudinary.uploader.upload(mainImage.path, {folder : folderName, public_id: "main_image"}, (err, image) => {
