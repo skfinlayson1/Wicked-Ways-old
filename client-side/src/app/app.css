@@ -12,12 +12,15 @@ main {
 }
 
 a {
+    color: white;
     text-decoration: none;
     text-decoration-color: white;
 }
 
 a:visited {
     color: white;
+    text-decoration: none;
+    text-decoration-color: white;
 }
 
 @media all and (min-width: 515px) {
