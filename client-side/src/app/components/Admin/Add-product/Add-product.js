@@ -23,15 +23,17 @@ class AddProduct extends React.Component {
     topImage = (e) => {
         const image = e.target.files[0];
 
-        const blob = new Blob([image], {"type": "image/jpg"});
-        const url = URL.createObjectURL(blob);
+        if (image) {
+            const blob = new Blob([image], {"type": "image/jpg"});
+            const url = URL.createObjectURL(blob);
 
-        this.setState(prevState => {
-            return {
-                mainImage: prevState.mainImage = image,
-                mainImageUrl: prevState.mainImageUrl = [{imageUrl:url}] 
-            }
-        })
+            this.setState(prevState => {
+                return {
+                    mainImage: prevState.mainImage = image,
+                    mainImageUrl: prevState.mainImageUrl = [{imageUrl:url}] 
+                }
+            })
+        }
     }
 
 // Remove the main image -----------------------------------------
@@ -49,30 +51,32 @@ class AddProduct extends React.Component {
         const image = e.target.files[0];
         const imageArray = this.state.additionalImages;
         const imageUrlArray = this.state.additionalImagesUrls;
-        let duplicate = image.name === this.state.mainImage.name;
-        // Set the errors state back to null and check if the image has a duplicated name
-        this.setState((prevState) => {return {errors: prevState.errors = null}});
-        imageUrlArray.forEach(img => img.name === image.name ? duplicate = true : null);
+        // Check to see if it's a valid file
+        if (image) {
+            let duplicate = image.name === this.state.mainImage.name;
+            // Set the errors state back to null and check if the image has a duplicated name
+            this.setState((prevState) => {return {errors: prevState.errors = null}});
+            imageUrlArray.forEach(img => img.name === image.name ? duplicate = true : null);
 
-        if (image && !duplicate) {
-            const ext = image.name.split(".").pop()
-            const blob = new Blob([image], {"type": `image/${ext}`});
-            const url = URL.createObjectURL(blob);
+            if (!duplicate) {
+                const ext = image.name.split(".").pop()
+                const blob = new Blob([image], {"type": `image/${ext}`});
+                const url = URL.createObjectURL(blob);
 
-            imageUrlArray.push({name: image.name, imageUrl: url});
-            imageArray.push(image);
-            // Push the file to additionalImages and the url to additionalIamgesUrls
-            this.setState((prevState) => {
-                return {
-                    additionalImages: prevState.additionalImages = imageArray,
-                    additionalImagesUrls: prevState.additionalImagesUrls = imageUrlArray
-                }
-            })
-        } else {
-            // Return an error for bad files or duplicated image names.
-            this.setState((prevState) => {return { errors: prevState.errors = [{msg: "Image name already present or image not valid"}]}})
+                imageUrlArray.push({name: image.name, imageUrl: url});
+                imageArray.push(image);
+                // Push the file to additionalImages and the url to additionalIamgesUrls
+                this.setState((prevState) => {
+                    return {
+                        additionalImages: prevState.additionalImages = imageArray,
+                        additionalImagesUrls: prevState.additionalImagesUrls = imageUrlArray
+                    }
+                })
+            } else {
+                // Return an error for bad files or duplicated image names.
+                this.setState((prevState) => {return { errors: prevState.errors = [{msg: "Image name already present"}]}})
+            }
         }
-
     }
 
 // Remove an additional image ----------------------------------------
@@ -225,7 +229,7 @@ class AddProduct extends React.Component {
 
                     {/* Height, Width, Depth */}
                     <div className="form-section">
-                            <h3>Dimensions</h3>
+                            <h3>Dimensions <small>(inches)</small></h3>
                             <div id="sizes">
 
                                 <div className="dimensions">
