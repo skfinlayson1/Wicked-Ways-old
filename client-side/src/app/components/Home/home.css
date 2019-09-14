@@ -8,6 +8,18 @@
     width: 50%;
 }
 
+#navigation-text {
+    margin-bottom: 2rem;
+}
+
+#navigation-text a {
+    padding: 1rem;
+    background-color: rgb(49, 49, 49);
+    border-radius: 1rem;
+    margin: 0px 2vw;
+    font-size: 1.5rem;
+}
+
 .artwork {
     display: block;
     max-width: 80%;

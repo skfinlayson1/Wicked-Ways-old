@@ -36,6 +36,11 @@ class Home extends React.Component {
 
                 {/* Wicked Ways Logo */}
                 <img onClick={this.hello} id="full-logo" src={backgrounds.largeLogo} alt="Wicked Ways Logo"></img>
+                <nav id="navigation-text">
+                    <NavLink to="/about">About</NavLink>
+                    <NavLink to="/contact">Contact</NavLink>
+                    <NavLink to="/">Sign-in</NavLink>
+                </nav>
 
                 {this.state.images.map((img, index) => {   
                     return (
